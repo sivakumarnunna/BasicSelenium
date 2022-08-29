@@ -44,7 +44,7 @@ public class BasePage {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		
 		driver.get(ConfigReader.BASE_URL);
-		driver.findElement(By.linkText("Sign In")).click();   //to work on link
+	//	driver.findElement(By.linkText("Sign In")).click();   //to work on link
 		
 		
 		

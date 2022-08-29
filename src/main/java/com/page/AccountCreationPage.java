@@ -16,7 +16,7 @@ public class AccountCreationPage extends BasePage {
 	public static By tffirstname =  By.id(LocatorReader.LOCATOR_READER.getProperty("tffirstname"));
 	public static By tflastname =  By.id(LocatorReader.LOCATOR_READER.getProperty("tflastname"));
 
-	public static By tfregemail =  By.id(LocatorReader.LOCATOR_READER.getProperty("tfregemail"));
+	public static By tfregemail =  By.name(LocatorReader.LOCATOR_READER.getProperty("tfregemail"));
 
 	
 	
@@ -24,10 +24,13 @@ public class AccountCreationPage extends BasePage {
 	public static By tfregconfpassword =  By.id(LocatorReader.LOCATOR_READER.getProperty("tfregconfpassword"));
 
 	
-	public static By btnsubmit =  By.name(LocatorReader.LOCATOR_READER.getProperty("btnsubmit"));
+	public static By btnsubmit =  By.xpath(LocatorReader.LOCATOR_READER.getProperty("btnregsubmit"));
 	
 	
 	public void createAccount(AccountCreationDetails accountcreationdetails) {
+		
+		
+		driver.findElement(By.linkText("Create an Account")).click();
 		 
 		driver.findElement(tffirstname).clear(); 
 		driver.findElement(tffirstname).sendKeys(accountcreationdetails.getFirstname()); 
@@ -46,15 +49,7 @@ public class AccountCreationPage extends BasePage {
 		
 		driver.findElement(btnsubmit).click();
 		
-		
-		//System.out.println(driver.findElement(txtwelcomemessage).getText());
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-   //   Assert.assertEquals(driver.findElement(txtwelcomemessage).getText(), "Welcome, sddadada dadsada!");
+	
 
 	 
  }
