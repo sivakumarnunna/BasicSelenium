@@ -11,8 +11,7 @@ public class LumaCustomerLoginPage extends BasePage {
 	
 	public static By tfemail =  By.id(LocatorReader.LOCATOR_READER.getProperty("tfemail"));
 	public static By tfpassword =  By.id(LocatorReader.LOCATOR_READER.getProperty("tfpassword"));
-	public static By btnsubmit =  By.name(LocatorReader.LOCATOR_READER.getProperty("btnsubmit"));
-    public static By userhomepage= By.xpath(LocatorReader.LOCATOR_READER.getProperty("txtwelcomemessage"));
+	public static By btnsubmit =  By.xpath(LocatorReader.LOCATOR_READER.getProperty("btnsubmit"));
     public static By txtwelcomemessage= By.xpath(LocatorReader.LOCATOR_READER.getProperty("txtwelcomemessage"));
 
 

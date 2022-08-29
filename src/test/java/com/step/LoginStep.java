@@ -9,20 +9,18 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 
-public class ApplicationTests  {
+public class LoginStep  {
 	
 	LoginDetails logindetails = new LoginDetails();
 	LumaCustomerLoginPage lognpage = new LumaCustomerLoginPage();
 	
 	
-	@Given("email {string}")
+	@Given("email to login {string}")
 	public void username(String username) {
 		logindetails.setUsername(username);
 	}
-	
-	
 
-	@Given("password  {string}")
+	@Given("password to login {string}")
 	public void password(String password) {
 		logindetails.setPassword(password);
 
