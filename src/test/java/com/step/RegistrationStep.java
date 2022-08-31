@@ -49,8 +49,7 @@ public class RegistrationStep {
 
 	@Then("account should be created successfully")
 	public void account_should_be_created_successfully() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+
 	}
 
 
