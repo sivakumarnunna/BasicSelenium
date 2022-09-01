@@ -7,18 +7,20 @@ Feature: Sample Feature
     Given password to register "<password>"
     Given confirmpassword "<conformpassword>"
     When I click on create an account button
-    Then account should be created successfully
+    Then account should be created successfully "<firstname>" ,"<lastname>"
+    When I clicked on Sign out
+    Then user signout successfully
 
     Examples: 
       | firstname | lastname  | email            | password | conformpassword |
-      | nunna     | sivakumar | abcdefgh@xyz.com | Test@123 | Test@123        |
+      | nunna     | sivakumar | london13@xyz.com | Test@123 | Test@123        |
 
-  #Scenario Outline: Successful login with valid details
-    #Given email to login "<email>"
-    #Given password to login "<password>"
-    #When I click on Signin button
-    #Then login Should be successful
-#
-    #Examples: 
-      #| email            | password |
-      #| abcdefgh@xyz.com | Test@123 |
+  Scenario Outline: Successful login with valid details
+    Given email to login "<email>"
+    Given password to login "<password>"
+    When I click on Signin button
+    Then login Should be successful
+
+    Examples: 
+      | email            | password |
+      | london13@xyz.com | Test@123 |

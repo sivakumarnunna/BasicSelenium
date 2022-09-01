@@ -27,7 +27,7 @@ public class LoginStep  {
 	}
 
 	@When("I click on Signin button")
-	public void i_click_on_signin_button() {
+	public void i_click_on_signin_button() throws InterruptedException {
 		
 		lognpage.doLogin(logindetails);
 	}

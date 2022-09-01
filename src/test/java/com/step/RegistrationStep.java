@@ -1,5 +1,7 @@
 package com.step;
 
+import org.testng.Assert;
+
 import com.model.AccountCreationDetails;
 import com.page.AccountCreationPage;
 
@@ -40,17 +42,33 @@ public class RegistrationStep {
 	    	}
 
 	@When("I click on create an account button")
-	public void i_click_on_create_an_account_button() {
+	public void i_click_on_create_an_account_button() throws InterruptedException {
 		
 	accountcreationpage.createAccount(accountcreationdetails);
 		
 	  
 	}
 
-	@Then("account should be created successfully")
-	public void account_should_be_created_successfully() {
-
+	@Then("account should be created successfully {string} ,{string}")
+	public void account_should_be_created_successfully(String firstname, String lastname) {
+		
+		String fullname = firstname+" "+lastname;
+		accountcreationpage.verifyAccountCreation(fullname);
+		
+		
 	}
+	
+	@When("I clicked on Sign out")
+	public void i_clicked_on_sign_out() {
+		accountcreationpage.doSignOut();
+	  
+	}
+
+	@Then("user signout successfully")
+	public void user_signout_successfully() {
+	   
+	}
+
 
 
 
