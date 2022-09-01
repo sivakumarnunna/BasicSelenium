@@ -9,6 +9,8 @@ public class CommonPage {
 	
 	public static By lnkcreateaccout=By.linkText(LocatorReader.LOCATOR_READER.getProperty("lnkcreateaccout"));
 	public static By lnksignin = By.linkText(LocatorReader.LOCATOR_READER.getProperty("lnksignin"));	
+	public static By lnksignout = By.linkText(LocatorReader.LOCATOR_READER.getProperty("lnksignout"));	
+
     public static By txtwelcomemessage= By.xpath(LocatorReader.LOCATOR_READER.getProperty("txtwelcomemessage"));
 
 

@@ -6,8 +6,9 @@ import org.testng.Assert;
 import com.model.LoginDetails;
 import com.reader.LocatorReader;
 import com.utils.BasePage;
+import com.utils.WebDriverUtils;
 
-public class LumaCustomerLoginPage extends BasePage {
+public class LumaCustomerLoginPage extends WebDriverUtils {
 	
 	public static By tfemail =  By.id(LocatorReader.LOCATOR_READER.getProperty("tfemail"));
 	public static By tfpassword =  By.id(LocatorReader.LOCATOR_READER.getProperty("tfpassword"));
@@ -19,15 +20,13 @@ public class LumaCustomerLoginPage extends BasePage {
  public void doLogin(LoginDetails logindetails) throws InterruptedException {
 	 
 	 
-	 Thread.sleep(3000);
 
 		driver.findElement(CommonPage.lnksignin).click();
-		driver.findElement(tfemail).clear(); // clear the prefilled values from testbox
-		driver.findElement(tfemail).sendKeys(logindetails.getUsername()); // enter values in text box
-		driver.findElement(tfpassword).clear(); // clear the prefilled values from testbox
-		driver.findElement(tfpassword).sendKeys(logindetails.getPassword()); // enter values in text box
-		driver.findElement(btnsubmit).click();
-			Thread.sleep(3000);
+		
+		click(CommonPage.lnksignin);
+		EnterText(tfemail, logindetails.getUsername());
+		EnterText(tfpassword, logindetails.getPassword());
+		click(btnsubmit);
 		
       Assert.assertEquals(driver.findElement(CommonPage.txtwelcomemessage).getText().contains("Welcome,"),true);
 

@@ -50,7 +50,7 @@ public class RegistrationStep {
 	}
 
 	@Then("account should be created successfully {string} ,{string}")
-	public void account_should_be_created_successfully(String firstname, String lastname) {
+	public void account_should_be_created_successfully(String firstname, String lastname) throws InterruptedException {
 		
 		String fullname = firstname+" "+lastname;
 		accountcreationpage.verifyAccountCreation(fullname);
