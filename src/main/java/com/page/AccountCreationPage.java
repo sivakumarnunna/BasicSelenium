@@ -18,6 +18,8 @@ public class AccountCreationPage extends WebDriverUtils {
 	public static By ddprofile =  By.xpath(LocatorReader.LOCATOR_READER.getProperty("ddprofile"));
 	
 		public void createAccount(AccountCreationDetails accountcreationdetails) throws InterruptedException {
+			
+			
 		
 			logger.info("Creating a new account on "+ConfigReader.BASE_URL);
 	

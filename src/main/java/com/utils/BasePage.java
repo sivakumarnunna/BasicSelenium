@@ -49,13 +49,13 @@ public class BasePage {
 		
 		logger.info("Browser is :: "+BROWSER_TYPE);
 		
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+		//driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		
-		driver.get(ConfigReader.BASE_URL);
-		logger.info(ConfigReader.BASE_URL+" opened successfully on "+BROWSER_TYPE);
+		//driver.get(ConfigReader.BASE_URL);  //Base uRL will invoed.
+		//logger.info(ConfigReader.BASE_URL+" opened successfully on "+BROWSER_TYPE);
 
-		driver.manage().window().maximize();
-		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
+		//driver.manage().window().maximize();
+	//	driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
 		
 	}
 	
