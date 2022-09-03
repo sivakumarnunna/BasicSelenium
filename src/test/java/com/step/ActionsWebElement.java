@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
@@ -29,9 +30,8 @@ import com.utils.WebDriverUtils;
 
 public class ActionsWebElement extends WebDriverUtils {
 
-	public static void main(String[] args) throws AWTException, IOException {
-		
-		RobotActions();
+	public static void main(String[] args) throws AWTException, IOException, InterruptedException {
+		handleIframes();
 	}
 
 	// Handle web based alerts
@@ -153,35 +153,104 @@ public class ActionsWebElement extends WebDriverUtils {
 		
 		
 		String baseUrl = "https://magento.softwaretestingboard.com/customer/account/login";
-
 		driver.get(baseUrl);
 		
-		try {
-			WebDriverWait ww = new WebDriverWait(driver, Duration.ofSeconds(30));
-			
 
-			
-			System.out.println( ww.until(ExpectedConditions.invisibilityOfElementLocated((By.id("email")))));
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		
+		  driver.get(baseUrl);
+		  
+		  try { WebDriverWait ww = new WebDriverWait(driver, Duration.ofSeconds(30));
+		  System.out.println(
+		  ww.until(ExpectedConditions.invisibilityOfElementLocated((By.id("email")))));
+		  } catch (Exception e) { // TODO Auto-generated catch block
+		  e.printStackTrace(); }
+		 
+	}
+	
+	public static void fluentWait() {
+	FluentWait<WebDriver> wait = new FluentWait<WebDriver>(driver);
+	
+	wait.withTimeout(Duration.ofSeconds(30));
+	
+	wait.pollingEvery(Duration.ofSeconds(5));
+	
+	wait.ignoring(NoSuchElementException.class);
+
+	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("email")));
+
+
+	}
+	
+	
+	public static void MultipleWindows() {
+		
+		 driver.get("https://demoqa.com/browser-windows");
+
+	        // Open new window by clicking the button
+	         driver.findElement(By.id("windowButton")).click();
+
+	        
+	         String parentwindowhandler = driver.getWindowHandle();
+	         
+
+	         
+	         Set<String> all = driver.getWindowHandles();
+	         
+	          for(String s : all) {
+	        	  
+	        	  System.out.println(s);
+	        	  if(!s.equalsIgnoreCase(parentwindowhandler)) {
+	        		  driver.switchTo().window(s);
+	        	  }
+	          }
+	         
+	          // Click on the new window element and read the text displayed on the window
+		         WebElement text = driver.findElement(By.id("sampleHeading"));
+		         
+	   
+	         // Fetching the text using method and printing it     
+	         System.out.println("Element found using text: " + text.getText());
+	         driver.switchTo().defaultContent();
+		
+	}
+	
+	public static void findElements() {
+		
+		//https://www.hyrtutorials.com/p/frames=practice.html
+		driver.get("https://sports.bwin.com/en/sports");
+		
+		List<WebElement> ls = driver.findElements(By.tagName("a"));
+		
+		System.out.println("Total links "+ls.size());
+		
+		for (WebElement wb : ls) {
+			System.out.println(wb);
 		}
 		
-		WebElement we =  driver.findElement(By.id("Email"));
 		
+			
 		
-		
-		
-				FluentWait<WebDriver> wait = new FluentWait<WebDriver>(driver);
-				
-				wait.withTimeout(Duration.ofSeconds(30));
-				
-				wait.pollingEvery(Duration.ofSeconds(5));
-				
-				//Specify what exceptions to ignore
-				wait.ignoring(NoSuchElementException.class);
+			List<WebElement> ls1 =	driver.findElements(By.tagName("iframe"));
+			
+			System.out.println("Total iframes "+ls1.size());
 
-				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("email")));
+
+		
+	}
+	
+	public static void handleIframes() throws InterruptedException {
+		
+		driver.get("https://www.w3schools.com/html/tryit.asp?filename=tryhtml_links_w3schools");
+			 
+		Thread.sleep(1000);
+		if (driver.findElements(By.id("accept-choices")).size() > 0) {
+			driver.findElement(By.id("accept-choices")).click();
+		}
+			 
+	//driver.switchTo().frame("iframeResult");
+		
+		driver.findElement(By.xpath("//a[normalize-space()='Visit W3Schools.com!']")).click();
+	
 		
 		
 	}
