@@ -1,5 +1,6 @@
 package com.page;
 
+import org.apache.commons.lang.RandomStringUtils;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import com.model.AccountCreationDetails;
@@ -8,6 +9,8 @@ import com.reader.LocatorReader;
 import com.utils.WebDriverUtils;
 
 public class AccountCreationPage extends WebDriverUtils {
+	
+	
 	
 	public static By tffirstname =  By.id(LocatorReader.LOCATOR_READER.getProperty("tffirstname"));
 	public static By tflastname =  By.id(LocatorReader.LOCATOR_READER.getProperty("tflastname"));
@@ -18,15 +21,7 @@ public class AccountCreationPage extends WebDriverUtils {
 	public static By ddprofile =  By.xpath(LocatorReader.LOCATOR_READER.getProperty("ddprofile"));
 	
 		public void createAccount(AccountCreationDetails accountcreationdetails) throws InterruptedException {
-			
-			
 		
-			logger.info("Creating a new account on "+ConfigReader.BASE_URL);
-	
-		click(CommonPage.lnkcreateaccout); 
-		
-		logger.info("Account creation page opened successfully");
-
 		EnterText(tffirstname, accountcreationdetails.getFirstname());
 		EnterText(tflastname, accountcreationdetails.getLastname());
 		EnterText(tfregemail, accountcreationdetails.getEmail());
@@ -35,6 +30,14 @@ public class AccountCreationPage extends WebDriverUtils {
 		click(btnsubmit);
 
  }
+		
+		public void gotoAccountCreationPage() {
+			
+		logger.info("Creating a new account on "+ConfigReader.BASE_URL);
+		click(CommonPage.lnkcreateaccout); 
+		logger.info("Account creation page opened successfully");
+			
+		}
 		
 		public void verifyAccountCreation(String name) throws InterruptedException {
 			  Thread.sleep(1000);

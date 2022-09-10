@@ -1,10 +1,12 @@
 package com.step;
 
-import org.testng.Assert;
+import java.util.List;
 
+import org.apache.commons.lang.RandomStringUtils;
+import org.testng.Assert;
 import com.model.AccountCreationDetails;
 import com.page.AccountCreationPage;
-
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -69,6 +71,30 @@ public class RegistrationStep {
 	   
 	}
 
+	@When("I am on account creation page")
+	public void i_am_on_account_creation_page() {
+		accountcreationpage.gotoAccountCreationPage();
+		
+	}
+
+	@Given("details for creating a new account")
+	public void details_for_creating_a_new_account(DataTable accountcreationdetails) throws InterruptedException {
+		
+		List<List<String>>  accdetls = accountcreationdetails.asLists();
+		
+		for(List<String> ls : accdetls) {
+			
+			AccountCreationDetails act = new AccountCreationDetails();
+			act.setFirstname(ls.get(0));
+			act.setLastname(ls.get(1));
+			act.setEmail(ls.get(2)+RandomStringUtils.randomAlphabetic(5)+"@xyz.com");
+			act.setPassowrd(ls.get(3));
+			act.setConfirmpassword(ls.get(4));
+			accountcreationpage.createAccount(act);
+			
+		}
+	   
+	}
 
 
 
