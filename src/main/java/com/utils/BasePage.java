@@ -26,6 +26,7 @@ public class BasePage {
 	
 	static {
 		
+		
 		BROWSER_TYPE = ConfigReader.CONFIG_READER.getProperty("browsertype");
 		switch (BROWSER_TYPE) {
 		case "chrome":
