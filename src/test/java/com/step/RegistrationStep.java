@@ -3,7 +3,6 @@ package com.step;
 import java.util.List;
 
 import org.apache.commons.lang.RandomStringUtils;
-import org.testng.Assert;
 import com.model.AccountCreationDetails;
 import com.page.AccountCreationPage;
 import io.cucumber.datatable.DataTable;
@@ -15,6 +14,7 @@ public class RegistrationStep {
 	
 	AccountCreationDetails accountcreationdetails = new AccountCreationDetails();
 	AccountCreationPage accountcreationpage = new  AccountCreationPage();
+	List<String> userEmails = null;
 	
 	
 	
@@ -81,15 +81,15 @@ public class RegistrationStep {
 	public void details_for_creating_a_new_account(DataTable accountcreationdetails) throws InterruptedException {
 		
 		List<List<String>>  accdetls = accountcreationdetails.asLists();
-		
 		for(List<String> ls : accdetls) {
-			
 			AccountCreationDetails act = new AccountCreationDetails();
 			act.setFirstname(ls.get(0));
 			act.setLastname(ls.get(1));
-			act.setEmail(ls.get(2)+RandomStringUtils.randomAlphabetic(5)+"@xyz.com");
+			String email = ls.get(2)+RandomStringUtils.randomAlphabetic(5)+"@xyz.com";
+			act.setEmail(email);
 			act.setPassowrd(ls.get(3));
 			act.setConfirmpassword(ls.get(4));
+			this.userEmails.add(email);
 			accountcreationpage.createAccount(act);
 			
 		}

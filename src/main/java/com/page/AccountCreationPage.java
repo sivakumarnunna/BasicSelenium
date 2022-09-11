@@ -1,6 +1,5 @@
 package com.page;
 
-import org.apache.commons.lang.RandomStringUtils;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import com.model.AccountCreationDetails;
