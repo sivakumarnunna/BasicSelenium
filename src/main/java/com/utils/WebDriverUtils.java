@@ -7,7 +7,7 @@ public class WebDriverUtils extends BasePage {
 	
 	public boolean EnterText( By by,String text) {
 		try {
-			Thread.sleep(1000);
+			Thread.sleep(5000);
 			driver.findElement(by).clear(); 
 			driver.findElement(by).sendKeys(text); 
 			logger.info("Entered "+text+" in the filed "+by);
